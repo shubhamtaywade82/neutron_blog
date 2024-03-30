@@ -1,0 +1,7 @@
+<h2 align="center">Title: <%= @article.title %></h2>
+<% # (TASK 1)Render resource information on view created for `show` action on successful creation of resource %>
+<% # Shows a particular article details here %>
+<div align="center">
+  <%= link_to "Show All Articles", articles_path, class: "btn btn-secondary" %>
+  <%= render @article %>
+</div>

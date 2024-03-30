@@ -1,0 +1,9 @@
+<%# Renders flash notice on view on creating new resource as explained in the notes  %>
+<div class="container">
+  <% flash.each do |name, msg| %>
+    <div class='alert alert-<%="#{name}"%> alert-dismissible fade show' role="alert" >
+      <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  <% end %>
+</div>

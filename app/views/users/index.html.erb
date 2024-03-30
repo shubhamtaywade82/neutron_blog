@@ -1,0 +1,24 @@
+<h1 align="center"> All Neutron Bloggers </h1>
+<div class="center">
+  <%= will_paginate(@users, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+</div>
+<div align="center">
+  <% @users.each do |user| %>
+    <div class="card center text-center mb-3" style="width: 25rem;">
+      <div class="card-body">
+        <div align="center">
+          <%= image_tag(user.gravatar_url, alt: user.username, class: "rounded-circle") %>
+        </div>
+        <h5><%= link_to user.username, user_path(user), class: "card-title" %></h5>
+        <h6 class="card-text"><%= pluralize(user.articles.count, "article") if user.articles %></h6>
+        <%= link_to "View Profile", user, class: "btn btn-outline-success" %>
+        <% if logged_in? && current_user.admin? %>
+          <%= link_to "Delete Profile", user_path(user), class: "btn btn-outline-danger", method: :delete, data: { confirm: "Are you sure you want to delete the user profile and all the associated articles ?" } %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="center">
+  <%= will_paginate(@users, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+</div>

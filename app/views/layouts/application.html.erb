@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NeutronBlog</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <%= render 'layouts/navigation' %>
+    <%# Renders the messages partial to display any flash messages available %>
+    <%= render 'layouts/messages'%>
+    <div class="container">
+      <%= yield %>
+      <%# This tag displays the Paramaters using the byebug gem Debugging %>
+      <%# debug(params) if Rails.env.development? %>
+    </div>
+    <%= render 'layouts/footer' %>
+  </body>
+</html>

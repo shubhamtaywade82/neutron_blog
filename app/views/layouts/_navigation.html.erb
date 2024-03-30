@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <%= link_to "NEUTRON BLOG", root_path, class: "navbar-brand", id: "logo" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <%= link_to "Bloggers", users_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Articles
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to "View Articles", articles_path, class: "dropdown-item" %>
+            <% if logged_in? %>
+              <%= link_to "Create new Article", new_article_path, class: "dropdown-item" %>
+            <% end %>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Categories
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to "View Categories", categories_path, class: "dropdown-item" %>
+            <% if logged_in? && current_user.admin? %>
+              <%= link_to "Create new Categories", new_category_path, class: "dropdown-item" %>
+            <% end %>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <% if logged_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= current_user.username %><%= "(Admin)" if current_user.admin? %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "View Profile", user_path(current_user), class: "dropdown-item" %>
+              <%= link_to "Edit Profile", edit_user_path(current_user), class: "dropdown-item" %>
+              <%= link_to "Delete Profile", user_path(current_user), class: "dropdown-item text-danger", method: :delete, data: { confirm: "Are you sure?" } %>
+            </div>
+          </li>
+        <% end %>
+        <% if logged_in? %>
+          <li class="nav-item">
+            <%= link_to "Log out", logout_path, class: "btn btn-danger mr-3", method: :delete %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Login", login_path, class: "btn btn-primary mr-3" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign Up", signup_path, class: "btn btn-success" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

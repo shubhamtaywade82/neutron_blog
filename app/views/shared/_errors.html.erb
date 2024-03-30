@@ -1,0 +1,24 @@
+<%# This is partial = a template(part of some files)
+  A partial is a piece of code or html.erb code which is common or redundant parts of the file
+  Partials can be used to manage or render the codes in a more manageable parts
+  to give a piece of code its own file
+  it can be identified when a file name starts with  _ (underscore)
+  this partial can be rendered using <%= render "partial_path"%>
+<%#
+  if the partials are in the application layouts folder we need to specify
+  the paths to the partials from the views as the root/start
+ %>
+<% if obj.errors.any? %>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <h4 class="alert-heading"><%= pluralize(obj.errors.count, 'error') %> preventing the Article from saving are
+    </h4>
+    <hr>
+    <ul>
+      <% obj.errors.full_messages.each do |message| %>
+        <li>
+          <p class="mb-0"><%= message %></p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

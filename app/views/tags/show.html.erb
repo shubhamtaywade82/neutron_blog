@@ -1,0 +1,7 @@
+<h1 class="text-center mt-4">Tag: <%= @tag.name %></h1>
+<% if logged_in? && current_user.admin? %>
+    <%= link_to "Edit Tag", edit_tag_path(@tag), class: "badge " %>
+  <% end %>
+<div align="center">
+  <%= render @tag.articles %>
+</div>

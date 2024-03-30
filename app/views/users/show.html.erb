@@ -1,0 +1,20 @@
+<div class="page_title">
+  <h1 align="center">Welcome to <%= @user.username %>'s page</h1>
+</div>
+<div align="center">
+  <%= image_tag(@user.gravatar_url, alt: @user.username, class: "rounded-circle") %>
+</div>
+<% # shows delete user option only when the use is an admin %>
+<% if logged_in? && @user == current_user %>
+  <div class="text-center mt-4">
+    <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-outline-info" %>
+  </div>
+<% end %>
+<h4 align="center"><%= @user.username %>'s articles</h4>
+<div class="center">
+  <%= will_paginate(@user_articles, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+</div>
+<%= render @user_articles %>
+<div class="center">
+  <%= will_paginate(@user_articles, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+</div>

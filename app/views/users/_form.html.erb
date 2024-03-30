@@ -1,0 +1,28 @@
+<%= render "shared/errors", obj: @user %>
+<div align="center">
+  <div class="col-8">
+    <%= form_for @user do |f| %>
+      <div class="form-group row">
+        <%= f.label :usename, class: "col-sm-3 col-form-label", align: "right" %>
+        <div class="col-sm-7">
+          <%= f.text_field :username, class: "form-control shadow rounded", placeholder: "Enter username" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <%= f.label :email, class: "col-sm-3 col-form-label", align: "right" %>
+        <div class="col-sm-7">
+          <%= f.email_field :email, class: "form-control shadow rounded", placeholder: "Enter Email id" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <%= f.label :password, class: "col-sm-3 col-form-label", align: "right" %>
+        <div class="col-sm-7">
+          <%= f.password_field :password, class: "form-control shadow rounded", placeholder: "Enter Password" %>
+        </div>
+      </div>
+      <div class="form-group row col-6">
+        <%= f.submit (@user.new_record? ? "SignUp" : "Update Account"), class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

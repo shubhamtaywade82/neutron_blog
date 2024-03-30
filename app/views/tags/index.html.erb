@@ -1,0 +1,13 @@
+<h1 class="text-center mt-4">Tags</h1>
+
+<div class="container" align="center">
+  <% @tags.each do |tag| %>
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between align-items-center mb-2" style:"width: 40px;">
+        <%= link_to tag.name, tag_path(tag), class: "text-success" %>
+        <span class="badge badge-primary badge-pill"> <%= pluralize(tag.articles.count, " article")%></span>
+      </li>
+    </ul>
+  <% end %>
+</div>
+
